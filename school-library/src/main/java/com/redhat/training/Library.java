@@ -18,8 +18,8 @@ public class Library {
     }
 
     public void checkOut(String studentId, String bookId) throws BookNotAvailableException {
-        if (!inventory.isBookAvailable( bookId )) {
-            throw new BookNotAvailableException( bookId );
+        if (!inventory.isBookAvailable(bookId)) {
+            throw new BookNotAvailableException(bookId);
         }
 
         inventory.withdraw(bookId);
