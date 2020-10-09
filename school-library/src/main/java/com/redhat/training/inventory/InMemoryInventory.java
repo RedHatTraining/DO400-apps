@@ -2,45 +2,41 @@ package com.redhat.training.inventory;
 
 import java.util.HashMap;
 
+import javax.enterprise.context.ApplicationScoped;
 
-public class InMemoryInventory implements BookInventory {
 
-    int totalCopiesAdded = 0;
-    HashMap<String, Integer> copies = new HashMap<>();
+@ApplicationScoped
+public class InMemoryInventory implements Inventory {
+
+    int totalCopies = 0;
+    HashMap<String, Integer> copiesByBook = new HashMap<>();
 
     @Override
-    public void add( String bookId, int numCopies ) {
-        copies.put(bookId, numCopies);
-        totalCopiesAdded += numCopies;
+    public void add(String bookId, int numCopies) {
+        copiesByBook.put(bookId, numCopies);
+        totalCopies += numCopies;
     }
 
     @Override
-    public void withdraw( String bookId ) {
-        copies.put(bookId, copies.get(bookId) - 1);
+    public void withdraw(String bookId) {
+        copiesByBook.put(bookId, copiesByBook.get(bookId) - 1);
     }
 
     @Override
-    public boolean isBookAvailable( String bookId ) {
-        return copies.get(bookId) > 0;
-    }
-
-    @Override
-    public int countAvailableCopies() {
-        int count = 0;
-        for (int bookCopies: copies.values()) {
-            count += bookCopies;
+    public boolean isBookAvailable(String bookId) {
+        if (copiesByBook.containsKey(bookId)) {
+            return copiesByBook.get(bookId) > 0;
         }
-
-        return count;
+        return false;
     }
 
     @Override
     public int countTotalCopies() {
-        return totalCopiesAdded;
+        return totalCopies;
     }
 
-    public Integer getCopies( String bookId ) {
-        return copies.get(bookId);
+    public Integer getCopies(String bookId) {
+        return copiesByBook.get(bookId);
     }
 
 }

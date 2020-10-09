@@ -5,7 +5,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
-import com.redhat.training.inventory.BookInventory;
+import com.redhat.training.inventory.Inventory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +13,12 @@ import org.junit.jupiter.api.Test;
 
 public class TestLibraryWithMockedInventory {
 
-    BookInventory inventory;
+    Inventory inventory;
     Library library;
 
     @BeforeEach
     public void setUp() {
-        inventory = mock(BookInventory.class);
+        inventory = mock(Inventory.class);
         library = new Library(inventory);
     }
 

@@ -1,5 +1,6 @@
 package com.redhat.training;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,10 +12,16 @@ import com.redhat.training.inventory.InMemoryInventory;
 
 public class LibraryTest {
 
+    InMemoryInventory inventory;
+
+    @BeforeEach
+    public void setUp() {
+        inventory = new InMemoryInventory();
+    }
+
     @Test
     public void test_getAvailabilityRate() throws BookNotAvailableException {
         // Given
-        InMemoryInventory inventory = new InMemoryInventory();
         inventory.add("book1", 2);
         inventory.add("book2", 2);
         Library library = new Library(inventory);
