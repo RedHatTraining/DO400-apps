@@ -5,44 +5,54 @@ import java.util.HashMap;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import com.redhat.training.books.Book;
+import com.redhat.training.books.BookNotAvailableException;
 import com.redhat.training.inventory.Inventory;
+
 
 @ApplicationScoped
 public class Library {
 
     private final Inventory inventory;
-    private HashMap<String, ArrayList<String>> loans = new HashMap<>();
+    private LoanRegistry loans = new LoanRegistry();
 
     public Library(Inventory inventory) {
         this.inventory = inventory;
     }
 
-    public void checkOut(String studentId, String bookId) throws BookNotAvailableException {
-        if (!inventory.isBookAvailable(bookId)) {
-            throw new BookNotAvailableException(bookId);
+    public Book checkOut(String studentId, String isbn) throws BookNotAvailableException {
+        if (!inventory.isBookAvailable(isbn)) {
+            throw new BookNotAvailableException(isbn);
         }
 
-        inventory.withdraw(bookId);
-        markBookAsBorrowedByStudent(studentId, bookId);
+        Book book = inventory.withdraw(isbn);
+        loans.markAsBorrowed(studentId, book);
+
+        return book;
     }
 
     public double getAvailablityRate() {
-        return 1 - ((double) countBookLoans() / inventory.countTotalCopies());
+        return 1 - ((double) loans.count() / inventory.count());
     }
 
-    private void markBookAsBorrowedByStudent(String studentId, String bookId) {
+}
+
+class LoanRegistry {
+
+    private HashMap<String, ArrayList<Book>> loans = new HashMap<>();
+
+    public void markAsBorrowed(String studentId, Book book) {
         if (!loans.containsKey(studentId)) {
-            loans.put(studentId, new ArrayList<String>());
+            loans.put(studentId, new ArrayList<Book>());
         }
-        loans.get(studentId).add(bookId);
+        loans.get(studentId).add(book);
     }
 
-    private int countBookLoans() {
+    public int count() {
         int count = 0;
-        for (ArrayList<String> studentLoans: loans.values()) {
+        for (ArrayList<Book> studentLoans: loans.values()) {
             count += studentLoans.size();
         }
-
         return count;
     }
 

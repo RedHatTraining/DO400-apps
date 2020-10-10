@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
+import com.redhat.training.books.BookNotAvailableException;
 import com.redhat.training.inventory.Inventory;
 
 import org.junit.jupiter.api.BeforeEach;

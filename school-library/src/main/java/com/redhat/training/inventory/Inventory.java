@@ -1,12 +1,13 @@
 package com.redhat.training.inventory;
 
+import com.redhat.training.books.Book;
 
 public interface Inventory {
-    void add( String string, int numCopies );
+    void add(Book book);
 
-    void withdraw( String bookId );
+    Book withdraw(String isbn);
 
-    boolean isBookAvailable( String bookId );
+    boolean isBookAvailable(String isbn);
 
-    int countTotalCopies();
+    int count();
 }

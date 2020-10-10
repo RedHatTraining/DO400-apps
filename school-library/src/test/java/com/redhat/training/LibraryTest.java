@@ -7,24 +7,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.redhat.training.books.Book;
+import com.redhat.training.books.BookNotAvailableException;
 import com.redhat.training.inventory.InMemoryInventory;
 
 
 public class LibraryTest {
 
     InMemoryInventory inventory;
+    Library library;
 
     @BeforeEach
     public void setUp() {
         inventory = new InMemoryInventory();
+        library = new Library(inventory);
     }
 
     @Test
     public void test_getAvailabilityRate() throws BookNotAvailableException {
         // Given
-        inventory.add("book1", 2);
-        inventory.add("book2", 2);
-        Library library = new Library(inventory);
+        inventory.add(new Book("book1"));
+        inventory.add(new Book("book1"));
+        inventory.add(new Book("book2"));
+        inventory.add(new Book("book2"));
+
         library.checkOut("student1", "book1");
 
         // When
@@ -37,23 +43,22 @@ public class LibraryTest {
     @Test
     public void test_checkout_withdrawsACopyOfTheBook() throws BookNotAvailableException {
         // Given
-        InMemoryInventory inventory = new InMemoryInventory();
-        inventory.add("book1", 2);
-        Library library = new Library(inventory);
+        inventory.add(new Book("book1"));
+        inventory.add(new Book("book1"));
 
         // When
         library.checkOut("student1", "book1");
 
         // Then
-        assertEquals(1, inventory.getCopies("book1"));
+        assertEquals(1, inventory.countCopies("book1"));
     }
 
     @Test
     public void test_checkout_throwsException_whenBookIsNotAvailable() throws BookNotAvailableException {
         // Given
-        InMemoryInventory inventory = new InMemoryInventory();
-        inventory.add("book1", 2);
-        Library library = new Library(inventory);
+        inventory.add(new Book("book1"));
+        inventory.add(new Book("book1"));
+
         library.checkOut("student1", "book1");
         library.checkOut("student2", "book1");
 
@@ -62,10 +67,8 @@ public class LibraryTest {
             library.checkOut("student1", "book1");
         } );
 
-
         // Then
         assertTrue(exception.getMessage().matches("(?i).* book1 .* not available"));
     }
-
 
 }
