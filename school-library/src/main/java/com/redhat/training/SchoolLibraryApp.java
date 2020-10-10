@@ -6,10 +6,6 @@ import javax.inject.Inject;
 import com.redhat.training.books.Book;
 import com.redhat.training.inventory.Inventory;
 
-// import javax.enterprise.context.control.ActivateRequestContext;
-// import javax.inject.Inject;
-
-// import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
