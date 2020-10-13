@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class BookStatsTest {
 
     @Test
-    public void test_countWords_Returns0_WhenBookEmpty() {
+    public void countWords_returns0_whenBookEmpty() {
         // Given
         Book book = new Book("someISBN");
 
@@ -21,7 +21,7 @@ public class BookStatsTest {
     }
 
     @Test
-    public void test_countWords_returnsNumberOfWords() {
+    public void countWords_returnsNumberOfWords() {
         // Given
         Book book = new Book("someISBN", "this is the content");
 
