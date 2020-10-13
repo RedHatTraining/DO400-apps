@@ -45,5 +45,4 @@ public class InMemoryInventory implements Inventory {
     public Integer countCopies(String isbn) {
         return books.get(isbn).size();
     }
-
 }
