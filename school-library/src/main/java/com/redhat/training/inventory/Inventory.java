@@ -3,11 +3,11 @@ package com.redhat.training.inventory;
 import com.redhat.training.books.Book;
 
 public interface Inventory {
-    void add(Book book);
+    public void add(Book book);
 
-    Book withdraw(String isbn);
+    public int count();
 
-    boolean isBookAvailable(String isbn);
+    public boolean isBookAvailable(String isbn);
 
-    int count();
+    public Book withdraw(String isbn);
 }

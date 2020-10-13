@@ -34,7 +34,6 @@ public class Library {
     public double getAvailablityRate() {
         return 1 - ((double) loans.count() / inventory.count());
     }
-
 }
 
 class LoanRegistry {
@@ -55,5 +54,4 @@ class LoanRegistry {
         }
         return count;
     }
-
 }

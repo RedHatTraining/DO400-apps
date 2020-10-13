@@ -60,5 +60,4 @@ public class LibraryWithMockedInventoryTest {
         // Then
         verify(inventory, times(0)).withdraw("book1");
     }
-
 }
