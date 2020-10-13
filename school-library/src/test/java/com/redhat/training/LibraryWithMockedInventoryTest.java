@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class TestLibraryWithMockedInventory {
+public class LibraryWithMockedInventoryTest {
 
     Inventory inventory;
     Library library;
