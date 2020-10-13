@@ -33,6 +33,7 @@ public class InMemoryInventory implements Inventory {
         if (books.containsKey(isbn)) {
             return books.get(isbn).size() > 0;
         }
+
         return false;
     }
 
