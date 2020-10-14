@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         JAVA_HOME="${tool 'java-11-openjdk'}"
-        PATH="${env.JAVA_HOME}/bin:${env.GRAALVM_HOME}/bin:${env.PATH}"
+        PATH="${env.JAVA_HOME}/bin:${env.PATH}"
     }
 
     stages {
