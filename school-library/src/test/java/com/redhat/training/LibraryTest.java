@@ -68,6 +68,6 @@ public class LibraryTest {
         } );
 
         // Then
-        assertTrue(exception.getMessage().matches("(?i).* book1 .* not available"));
+        assertTrue(exception.getMessage().matches("Book book1 is not available"));
     }
 }
