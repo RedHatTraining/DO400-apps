@@ -14,7 +14,7 @@ import com.redhat.training.inventory.Inventory;
 public class Library {
 
     private final Inventory inventory;
-    private LoanRegistry loans = new LoanRegistry();
+    private final LoanRegistry loans = new LoanRegistry();
 
     public Library(Inventory inventory) {
         this.inventory = inventory;
@@ -38,7 +38,7 @@ public class Library {
 
 class LoanRegistry {
 
-    private HashMap<String, ArrayList<Book>> loans = new HashMap<>();
+    private final HashMap<String, ArrayList<Book>> loans = new HashMap<>();
 
     public void markAsBorrowed(String studentId, Book book) {
         if (!loans.containsKey(studentId)) {
