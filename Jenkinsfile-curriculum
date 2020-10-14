@@ -17,6 +17,8 @@ pipeline {
                         }
                     }
                 }
+
+                // add other apps here...
             }
         }
     }
