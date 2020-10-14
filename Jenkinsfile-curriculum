@@ -1,0 +1,29 @@
+pipeline {
+
+    agent { label "master" }
+
+    environment {
+        JAVA_HOME="${tool 'java-11-openjdk'}"
+        PATH="${env.JAVA_HOME}/bin:${env.GRAALVM_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('Tests') {
+            parallel {
+                stage('school-library tests') {
+                    steps {
+                        dir('school-library') {
+                            sh './mvnw test'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
