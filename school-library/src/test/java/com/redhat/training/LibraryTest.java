@@ -23,51 +23,5 @@ public class LibraryTest {
         library = new Library(inventory);
     }
 
-    @Test
-    public void getAvailabilityRate_returnsTheCorrectPercent() throws BookNotAvailableException {
-        // Given
-        inventory.add(new Book("book1"));
-        inventory.add(new Book("book1"));
-        inventory.add(new Book("book2"));
-        inventory.add(new Book("book2"));
-
-        library.checkOut("student1", "book1");
-
-        // When
-        double rate = library.getAvailablityRate();
-
-        // Then
-        assertEquals(0.75, rate);
-    }
-
-    @Test
-    public void checkout_withdrawsACopyOfTheBook() throws BookNotAvailableException {
-        // Given
-        inventory.add(new Book("book1"));
-        inventory.add(new Book("book1"));
-
-        // When
-        library.checkOut("student1", "book1");
-
-        // Then
-        assertEquals(1, inventory.countCopies("book1"));
-    }
-
-    @Test
-    public void checkout_throwsException_whenBookIsNotAvailable() throws BookNotAvailableException {
-        // Given
-        inventory.add(new Book("book1"));
-        inventory.add(new Book("book1"));
-
-        library.checkOut("student1", "book1");
-        library.checkOut("student2", "book1");
-
-        // When
-        final BookNotAvailableException exception = assertThrows( BookNotAvailableException.class, () -> {
-            library.checkOut("student1", "book1");
-        } );
-
-        // Then
-        assertTrue(exception.getMessage().matches("Book book1 is not available"));
-    }
+    // Add tests here...
 }
