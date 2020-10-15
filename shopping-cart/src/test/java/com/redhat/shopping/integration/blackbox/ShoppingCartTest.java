@@ -21,9 +21,9 @@ public class ShoppingCartTest {
         AddToCartCommand productToAdd = new AddToCartCommand(productId, this.randomQuantity());
 
         given()
-                .contentType("application/json")
-                .body(productToAdd)
-                .put("/cart");
+            .contentType("application/json")
+            .body(productToAdd)
+            .put("/cart");
     }
 
     @BeforeEach
