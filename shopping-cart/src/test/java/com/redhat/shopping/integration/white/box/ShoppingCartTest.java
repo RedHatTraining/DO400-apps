@@ -26,7 +26,7 @@ public class ShoppingCartTest {
     void addingNonExistingProductInCatalogRaisesAnException() {
         assertThrows(
             ProductNotFoundInCatalogException.class,
-            ()->{
+            () -> {
                 int nonExistingProductId = 9999;
                 int qty                  = 10;
 

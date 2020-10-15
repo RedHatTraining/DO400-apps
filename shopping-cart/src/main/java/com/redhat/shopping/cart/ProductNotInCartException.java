@@ -1,6 +1,7 @@
 package com.redhat.shopping.cart;
 
 public class ProductNotInCartException extends Exception {
+
     public ProductNotInCartException(String errorMessage) {
         super(errorMessage);
     }
