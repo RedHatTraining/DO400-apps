@@ -24,7 +24,7 @@ public class LibraryWithMockedInventoryTest {
     }
 
     @Test
-    public void checkout_calls_inventory_isBookAvailable() throws BookNotAvailableException {
+    public void checkingOutChecksBookAvailability() throws BookNotAvailableException {
         // Given
         when(inventory.isBookAvailable("book1")).thenReturn(true);
 
@@ -36,7 +36,7 @@ public class LibraryWithMockedInventoryTest {
     }
 
     @Test
-    public void checkout_calls_inventory_withdraw() throws BookNotAvailableException {
+    public void checkingOutWithdrawsFromInventoryWhenBookIsAvailable() throws BookNotAvailableException {
         // Given
         when(inventory.isBookAvailable("book1")).thenReturn(true);
 
@@ -48,7 +48,7 @@ public class LibraryWithMockedInventoryTest {
     }
 
     @Test
-    public void checkout_doesNotWithdraw_WhenNoAvailability() throws BookNotAvailableException {
+    public void checkingOutDoesNotWithdrawFromInventoryWhenBookIsUnavailable() throws BookNotAvailableException {
         // Given
         when(inventory.isBookAvailable("book1")).thenReturn(false);
 

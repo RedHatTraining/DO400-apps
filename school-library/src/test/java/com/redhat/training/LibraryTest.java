@@ -24,7 +24,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void getAvailabilityRate_returnsTheCorrectPercent() throws BookNotAvailableException {
+    public void gettingAvailabilityRateReturnsCorrectPercent() throws BookNotAvailableException {
         // Given
         inventory.add(new Book("book1"));
         inventory.add(new Book("book1"));
@@ -41,7 +41,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void checkout_withdrawsACopyOfTheBook() throws BookNotAvailableException {
+    public void checkingOutDecreasesNumberOfBookCopiesFromInventory() throws BookNotAvailableException {
         // Given
         inventory.add(new Book("book1"));
         inventory.add(new Book("book1"));
@@ -54,7 +54,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void checkout_throwsException_whenBookIsNotAvailable() throws BookNotAvailableException {
+    public void checkingOutUnavailableBookThrowsException() throws BookNotAvailableException {
         // Given
         inventory.add(new Book("book1"));
         inventory.add(new Book("book1"));
