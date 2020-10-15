@@ -1,6 +1,7 @@
 package com.redhat.shopping.catalog;
 
 public class ProductNotFoundInCatalogException extends Exception {
+
     public ProductNotFoundInCatalogException(String errorMessage) {
         super(errorMessage);
     }

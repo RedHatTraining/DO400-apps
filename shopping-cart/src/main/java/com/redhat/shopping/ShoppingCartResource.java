@@ -24,7 +24,7 @@ public class ShoppingCartResource {
     @Consumes(APPLICATION_JSON)
     public Response addToCart(AddToCartCommand request) {
         try {
-            this.cartService.addProduct(request.id, request.qty);
+            this.cartService.addProduct(request.id, request.quantity);
         } catch (ProductNotFoundInCatalogException exception) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

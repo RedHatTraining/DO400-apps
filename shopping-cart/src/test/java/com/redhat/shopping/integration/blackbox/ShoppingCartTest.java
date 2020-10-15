@@ -1,12 +1,14 @@
-package com.redhat.shopping.integration.black.box;
+package com.redhat.shopping.integration.blackbox;
 
 import com.redhat.shopping.cart.AddToCartCommand;
 import io.quarkus.test.junit.QuarkusTest;
-import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.*;
+import java.util.Random;
+
+import static io.restassured.RestAssured.delete;
+import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 public class ShoppingCartTest {
@@ -47,7 +49,7 @@ public class ShoppingCartTest {
         int existingProductId = 1;
 
         // Setting the scenario to have the product with ID #1 already in the cart
-        this.addProductToTheCartWithIdAndRandomQty(1);
+        this.addProductToTheCartWithIdAndRandomQuantity(1);
 
         // Test implementation
         given()
@@ -63,8 +65,8 @@ public class ShoppingCartTest {
         int existingProductId = 1;
 
         // Setting the scenario to have the products with IDs 1 and 2 already in the cart
-        this.addProductToTheCartWithIdAndRandomQty(1);
-        this.addProductToTheCartWithIdAndRandomQty(2);
+        this.addProductToTheCartWithIdAndRandomQuantity(1);
+        this.addProductToTheCartWithIdAndRandomQuantity(2);
 
         // Test implementation
         given()
@@ -75,12 +77,12 @@ public class ShoppingCartTest {
             .statusCode(200);
     }
 
-    private int randomQty() {
+    private int randomQuantity() {
         return (new Random()).nextInt(10) + 1;
     }
 
-    private void addProductToTheCartWithIdAndRandomQty(int productId) {
-        AddToCartCommand productToAdd = new AddToCartCommand(productId, this.randomQty());
+    private void addProductToTheCartWithIdAndRandomQuantity(int productId) {
+        AddToCartCommand productToAdd = new AddToCartCommand(productId, this.randomQuantity());
 
         given()
             .contentType("application/json")

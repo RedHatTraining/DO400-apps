@@ -1,9 +1,10 @@
 package com.redhat.shopping.cart;
 
 public class CartItem {
+
     private final int id;
     private final int price;
-    private int qty = 0;
+    private int quantity = 0;
 
     public CartItem(int id, int price) {
         this.id    = id;
@@ -11,7 +12,7 @@ public class CartItem {
     }
 
     public void increaseQuantityBy(int increment) {
-        this.qty += increment;
+        this.quantity += increment;
     }
 
     public int getId() {
@@ -22,7 +23,7 @@ public class CartItem {
         return this.price;
     }
 
-    public int getQty() {
-        return this.qty;
+    public int getQuantity() {
+        return this.quantity;
     }
 }

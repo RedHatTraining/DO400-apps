@@ -1,4 +1,4 @@
-package com.redhat.shopping.integration.white.box;
+package com.redhat.shopping.integration.whitebox;
 
 import com.redhat.shopping.cart.CartService;
 import com.redhat.shopping.catalog.ProductNotFoundInCatalogException;
@@ -26,46 +26,34 @@ public class ShoppingCartTest {
     void addingNonExistingProductInCatalogRaisesAnException() {
         assertThrows(
             ProductNotFoundInCatalogException.class,
-            () -> {
-                int nonExistingProductId = 9999;
-                int qty                  = 10;
-
-                this.cartService.addProduct(nonExistingProductId, qty);
-            }
+            () -> this.cartService.addProduct(9999, 10)
         );
     }
 
     @Test
-    void addingNonExistingProductInCartTheTotalItemsMatchTheInitialQty() throws ProductNotFoundInCatalogException {
-        int existingProductId = 1;
-        int expectedQty       = 10;
-
+    void addingNonExistingProductInCartTheTotalItemsMatchTheInitialQuantity() throws ProductNotFoundInCatalogException {
         // Assert: there are no items in the cart
         assertEquals(0, this.cartService.totalItems());
 
         // Adding a product to the cart
-        this.cartService.addProduct(existingProductId, expectedQty);
+        this.cartService.addProduct(1, 10);
 
-        // Assert: the total number of items in the cart is equal to qty we added
-        assertEquals(expectedQty, this.cartService.totalItems());
+        // Assert: the total number of items in the cart is equal to the quantity we added
+        assertEquals(10, this.cartService.totalItems());
     }
 
     @Test
-    void addingProductThatIsInTheCartTheTotalItemsMatchTheSumOfQtys() throws ProductNotFoundInCatalogException {
-        int existingProductId = 1;
-        int initialQty        = 10;
-        int incrementalQty    = 100;
-
+    void addingProductThatIsInTheCartTheTotalItemsMatchTheSumOfQuantities() throws ProductNotFoundInCatalogException {
         // Assert: there are no items in the cart
         assertEquals(0, this.cartService.totalItems());
 
         // Adding a product to the cart with a specified initial quantity
-        this.cartService.addProduct(existingProductId, initialQty);
+        this.cartService.addProduct(1, 10);
 
         // Adding again the same product to the cart with a specified quantity
-        this.cartService.addProduct(existingProductId, incrementalQty);
+        this.cartService.addProduct(1, 100);
 
         // Assert: the total number of items in the cart is the sum of the initial and the incremental quantities
-        assertEquals(initialQty + incrementalQty, this.cartService.totalItems());
+        assertEquals(110, this.cartService.totalItems());
     }
 }

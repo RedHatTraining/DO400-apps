@@ -1,6 +1,7 @@
 package com.redhat.shopping.catalog;
 
 public class Product {
+
     private final int id;
     private final int price;
 

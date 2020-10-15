@@ -1,14 +1,15 @@
 package com.redhat.shopping.cart;
 
 public class AddToCartCommand {
+
     public int id;
-    public int qty;
+    public int quantity;
 
     public AddToCartCommand() {
     }
 
-    public AddToCartCommand(int id, int qty) {
-        this.id  = id;
-        this.qty = qty;
+    public AddToCartCommand(int id, int quantity) {
+        this.id       = id;
+        this.quantity = quantity;
     }
 }
