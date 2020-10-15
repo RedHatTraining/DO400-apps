@@ -31,7 +31,8 @@ public class ShoppingCartTest {
     }
 
     @Test
-    void addingNonExistingProductInCartTheTotalItemsMatchTheInitialQuantity() throws ProductNotFoundInCatalogException {
+    void addingNonExistingProductInCartTheTotalItemsMatchTheInitialQuantity()
+            throws ProductNotFoundInCatalogException {
         // Assert: there are no items in the cart
         assertEquals(0, this.cartService.totalItems());
 
@@ -43,7 +44,8 @@ public class ShoppingCartTest {
     }
 
     @Test
-    void addingProductThatIsInTheCartTheTotalItemsMatchTheSumOfQuantities() throws ProductNotFoundInCatalogException {
+    void addingProductThatIsInTheCartTheTotalItemsMatchTheSumOfQuantities()
+            throws ProductNotFoundInCatalogException {
         // Assert: there are no items in the cart
         assertEquals(0, this.cartService.totalItems());
 
