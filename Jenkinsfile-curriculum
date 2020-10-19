@@ -18,6 +18,14 @@ pipeline {
                     }
                 }
 
+                stage('shopping-cart tests') {
+                    steps {
+                        dir('shopping-cart') {
+                            sh './mvnw test'
+                        }
+                    }
+                }
+
                 // add other apps here...
             }
         }
