@@ -18,7 +18,10 @@ public class ShoppingCartTest {
     }
 
     private void addProductToTheCartWithIdAndRandomQuantity(int productId) {
-        AddToCartCommand productToAdd = new AddToCartCommand(productId, this.randomQuantity());
+        AddToCartCommand productToAdd = new AddToCartCommand(
+            productId,
+            this.randomQuantity()
+        );
 
         given()
             .contentType("application/json")
