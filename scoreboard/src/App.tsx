@@ -5,16 +5,7 @@ import { ScoreDisplay } from "./ScoreDisplay";
 
 function App() {
     const [playerName, setPlayerName] = useState<string>("");
-    const [players, setPlayers] = useState<Player[]>([
-        {
-            name: "bob",
-            score: 0,
-        },
-        {
-            name: "guy",
-            score: 3,
-        },
-    ]);
+    const [players, setPlayers] = useState<Player[]>([]);
 
     function updateScore(playerName: string, newScore: number) {
         const updatedPlayers = players.map((player) => {
