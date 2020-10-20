@@ -36,19 +36,22 @@ function App() {
         <>
             <h1>Scoreboard</h1>
 
-            {players.map((player, index) => (
-                <ScoreDisplay
-                    key={index}
-                    name={player.name}
-                    score={player.score}
-                    onUpdateScore={updateScore}
-                />
-            ))}
+            <div id="player-scores">
+                {players.map((player, index) => (
+                    <ScoreDisplay
+                        key={index}
+                        name={player.name}
+                        score={player.score}
+                        onUpdateScore={updateScore}
+                    />
+                ))}
+            </div>
 
             <br />
 
             <form onSubmit={newPlayerSubmit}>
                 <input
+                    type="text"
                     placeholder="Player Name"
                     value={playerName}
                     maxLength={10}
