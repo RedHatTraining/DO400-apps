@@ -1,4 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Scoreboard
+
+A simple scoreboard app built using React.
+
+![](screenshot.png)
+
+## Pre-requisites
+
+To run the application, you will need:
+
+-   Node.js version 12 or higher
+-   NPM version 6 or higher
+-   Yarn (install with `npm i -g yarn` or `sudo npm i -g yarn`)
+
+Additionally, in order to run functional tests with Cypress, you will need either Chrome or Firefox installed.
+You may instead use Docker to run Cypress in "headless mode" (see below under `yarn cy:docker`).
+
+See more details about system requirements for Cypress here:
+[https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
+
+## Installation
+
+Install all NPM dependencies by running:
+
+`yarn`
+
+Install NPM dependencies excluding develepment-only dependencies by running:
+
+`yarn --prod`
 
 ## Available Scripts
 
@@ -27,18 +55,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### `yarn format`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Automatically formats all files using Prettier.
+Learn more about Prettier at [prettier.io](https://prettier.io)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `yarn cy:open`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Opens the Cypress GUI.
+This allows you to select which browser Cypress should use, as well as select test files to run.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Requires Chrome or Firefox installation.
 
-## Learn More
+### `yarn cy:run`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Runs all Cypress tests in "headless mode" (doesn't open a browser window).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Requires Chrome or Firefox installation.
+
+### `yarn cy:docker`
+
+Runs all Cypress tests in "headless mode" withing a container using Docker.
+
+Requires Docker installation.

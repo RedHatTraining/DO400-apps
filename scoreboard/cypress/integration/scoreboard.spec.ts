@@ -1,9 +1,9 @@
-describe("add player", () => {
-    beforeEach(() => {
-        // GIVEN the user is on the app
-        cy.visit("http://localhost:3000");
-    });
+beforeEach(() => {
+    // GIVEN the user is on the app
+    cy.visit("/");
+});
 
+describe("add player", () => {
     it("should add a player", () => {
         // AND the user has entered 'bobby' into the 'Player Name' field
         cy.get("form").find('[placeholder="Player Name"]').type("bobby");
@@ -18,8 +18,6 @@ describe("add player", () => {
 
 describe("update score", () => {
     beforeEach(() => {
-        // GIVEN the user is on the app
-        cy.visit("http://localhost:3000");
         // AND the player 'tom' exists
         cy.get("form").find('[placeholder="Player Name"]').type("tom");
         cy.get("form").submit();
