@@ -80,3 +80,10 @@ Runs all Cypress tests in "headless mode" withing a container using Docker.
 
 Requires Docker installation.
 The development server must also be running (see `npm start`).
+
+### `npm run cy:podman`
+
+Runs all Cypress tests in "headless mode" withing a container using podman.
+
+Requires podman installation.
+The development server must also be running (see `npm start`).
