@@ -14,6 +14,18 @@ describe("add player", () => {
         // THEN 'bobby' should be added to the players
         cy.get("#player-scores").should("contain", "bobby");
     });
+
+    it("should only allow names of max length 10", () => {
+        // AND the user has entered 10 characters into the 'Player Name' field
+        const nameField = cy.get("form").find('[placeholder="Player Name"]');
+        nameField.type("1234567890");
+
+        // WHEN the user enters an 11th character
+        nameField.type("1");
+
+        // THEN the 'Player Name' field should not change
+        nameField.invoke("val").should("equal", "1234567890");
+    });
 });
 
 describe("update score", () => {
