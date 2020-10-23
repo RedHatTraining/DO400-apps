@@ -1,0 +1,48 @@
+{
+    "name": "scoreboard",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.3.2",
+        "@testing-library/user-event": "^7.1.2",
+        "@types/jest": "^24.0.0",
+        "@types/node": "^12.0.0",
+        "@types/react": "^16.9.0",
+        "@types/react-dom": "^16.9.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
+        "react-scripts": "^3.4.4",
+        "typescript": "~3.7.2"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.2",
+        "cypress": "^5.4.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "format": "prettier --write .",
+        "test": "react-scripts test",
+        "test:coverage": "cross-env CI=true npm run test --ci --coverage --collectCoverageFrom='src'",
+        "cy:open": "cross-env CYPRESS_CRASH_REPORTS=0 cypress open",
+        "cy:run": "cross-env CYPRESS_CRASH_REPORTS=0 cypress run",
+        "cy:docker": "docker run -it --rm -v $PWD:/e2e -w /e2e cypress/included:5.4.0 --config baseUrl=http://host.docker.internal:3000",
+        "cy:podman": "podman run -it --rm -v $PWD:/e2e -w /e2e cypress/included:5.4.0 --config baseUrl=http://172.17.0.1:3000"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
