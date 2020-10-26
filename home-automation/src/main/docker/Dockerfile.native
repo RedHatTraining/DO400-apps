@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t quarkus/tdd .
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/home-automation .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/tdd
+# docker run -i --rm -p 8080:8080 quarkus/home-automation
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.1
