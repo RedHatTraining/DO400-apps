@@ -26,7 +26,7 @@ pipeline {
                     }
                 }
 
-                stage('shopping-cart tests') {
+                stage('shipping-calculator tests') {
                     steps {
                         dir('shipping-calculator') {
                             sh './mvnw test'
