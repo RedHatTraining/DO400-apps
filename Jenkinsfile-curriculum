@@ -26,6 +26,14 @@ pipeline {
                     }
                 }
 
+                stage('shopping-cart tests') {
+                    steps {
+                        dir('shipping-calculator') {
+                            sh './mvnw test'
+                        }
+                    }
+                }
+
                 // add other apps here...
             }
         }
