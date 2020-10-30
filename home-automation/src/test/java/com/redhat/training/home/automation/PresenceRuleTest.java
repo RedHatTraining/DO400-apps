@@ -6,25 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import com.redhat.training.home.automation.rules.PresenceRule;
 
 public class PresenceRuleTest {
-
     @Test
-    public void passesWhenThereIsPresenceDetected() {
+    public void isMetWhenPresenceDetected() {
         PresenceRule rule = new PresenceRule();
 
         RoomConditions conditions = new RoomConditions(0, true);
-        conditions.presenceDetected = true;
 
-        assertTrue(rule.passes(conditions));
+        assertTrue(rule.meets(conditions));
     }
 
-
     @Test
-    public void failsWhenThereIsPresenceDetected() {
+    public void isNotMetWhenPresenceNotDetected() {
         PresenceRule rule = new PresenceRule();
 
         RoomConditions conditions = new RoomConditions(0, false);
 
-        assertFalse(rule.passes(conditions));
+        assertFalse(rule.meets(conditions));
     }
-
 }

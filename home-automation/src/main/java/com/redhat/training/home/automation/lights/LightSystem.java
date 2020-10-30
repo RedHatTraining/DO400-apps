@@ -1,11 +1,9 @@
 package com.redhat.training.home.automation.lights;
 
-public interface Lights {
-
+public interface LightSystem {
     void switchOff();
 
     void switchOn();
 
-    boolean areOn();
-
+    boolean isOn();
 }

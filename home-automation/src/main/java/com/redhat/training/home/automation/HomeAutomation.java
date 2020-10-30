@@ -1,18 +1,15 @@
 package com.redhat.training.home.automation;
 
-import javax.enterprise.context.ApplicationScoped;
-import com.redhat.training.home.automation.lights.Lights;
+import com.redhat.training.home.automation.lights.LightSystem;
 import com.redhat.training.home.automation.rules.Rule;
 import com.redhat.training.home.automation.rules.RulesRepository;
 
-@ApplicationScoped
 class HomeAutomation {
+    private LightSystem lightSystem;
+    private RulesRepository rulesRepository;
 
-    private final Lights lights;
-    private final RulesRepository rulesRepository;
-
-    public HomeAutomation(Lights lights, RulesRepository rulesRepository) {
-        this.lights = lights;
+    public HomeAutomation(LightSystem lightSystem, RulesRepository rulesRepository) {
+        this.lightSystem = lightSystem;
         this.rulesRepository = rulesRepository;
     }
 
@@ -20,13 +17,12 @@ class HomeAutomation {
         Iterable<Rule> rules = rulesRepository.getAll();
 
         for (Rule rule : rules) {
-            if (!rule.passes(conditions)) {
-                lights.switchOff();
+            if (!rule.meets(conditions)) {
+                lightSystem.switchOff();
                 return;
             }
         }
 
-        lights.switchOn();
+        lightSystem.switchOn();
     }
-
 }
