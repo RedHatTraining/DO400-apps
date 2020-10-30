@@ -34,6 +34,15 @@ pipeline {
                     }
                 }
 
+                stage('home-automation tests') {
+                    steps {
+                        dir('home-automation') {
+                            sh './mvnw test'
+                        }
+                    }
+                }
+
+
                 // add other apps here...
             }
         }
