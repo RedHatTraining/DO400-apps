@@ -3,23 +3,23 @@ package com.redhat.simple.calculator;
 import java.util.*;
 
 public class BasicCalculator {
-    public int divide(int n, int d) {
-        if (d == 0)
+    public int divide(final int dividend, final int divisor) {
+        if (divisor == 0)
             return Integer.MAX_VALUE;
         else
-            return n / d;
+            return dividend / divisor;
     }
 
-    public int subs(int a, int b) {
-        return a-b;
+    public int subs(final int minuend, final int subtrahend) {
+        return minuend-subtrahend;
     }
 
-    public int sum(int a, int b) {
-        return a+b;
+    public int sum(final int addendA, final int addendB) {
+        return addendA+addendB;
     }
 
-    public int multiply(int a, int b) {
-        return a*b;
+    public int multiply(final int multiplicand, final int multiplier) {
+        return multiplicand*multiplier;
     }
 
     public int Random() {
