@@ -11,18 +11,18 @@ public class BasicCalculator {
     }
 
     public int subs(int a, int b) {
-        return a - b;
+        return a-b;
     }
 
     public int sum(int a, int b) {
-        return a + b;
+        return a+b;
     }
 
     public int multiply(int a, int b) {
-        return a * b;
+        return a*b;
     }
 
-    public int random() {
+    public int Random() {
         Random r = new Random();
 
         return r.nextInt();
