@@ -11,4 +11,3 @@ const h1 = { innerHTML: "" }
 greet(input, h1).then(() => {
     assert.strictEqual(h1.innerHTML, "Hello Pablo");
 });
-
