@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AdvancedCalculatorTest {
+class AdvancedCalculatorTest {
     AdvancedCalculator calculator;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         calculator = new AdvancedCalculator();
     }
 
     @Test
-    public void testSumIntegers() {
+    void testSumIntegers() {
         assertEquals(1, calculator.sum(1, 0));
     }
 
     @Test
-    public void testSubstractIntegers() {
+    void testSubstractIntegers() {
         assertEquals(45, calculator.subs(50, 5));
     }
 
