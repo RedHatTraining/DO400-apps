@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<ruleset name="PMD-Rules">
+    <description>PMD rules</description>
+    <rule ref="category/java/design.xml/CyclomaticComplexity" />
+</ruleset>
