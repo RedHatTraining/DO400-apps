@@ -1,0 +1,24 @@
+{
+  "name": "greeting-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "greet.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint .",
+    "test": "echo \"Test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jramcast/do400-greeting-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jramcast/do400-greeting-service/issues"
+  },
+  "homepage": "https://github.com/jramcast/do400-greeting-service#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
