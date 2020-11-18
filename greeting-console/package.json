@@ -4,9 +4,8 @@
   "description": "Sample app for DO400",
   "main": "index.js",
   "scripts": {
-
     "lint": "eslint .",
-    "test": "node test/greet.test.js"
+    "test": "mocha test"
   },
   "author": "Jaime Ramirez <jaime.ramirez@redhat.com>",
   "license": "ISC",

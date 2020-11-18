@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint .",
-    "test": "echo \"Test\""
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jramcast/do400-greeting-service#readme",
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
   }
 }
