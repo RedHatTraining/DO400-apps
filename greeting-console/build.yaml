@@ -9,11 +9,11 @@ spec:
   source:
     type: Git
     git:
-      uri: 'https://github.com/YOUR_GITHUB_USER/do400-image-build'
+      uri: 'https://github.com/YOUR_GITHUB_USER/do400-greeting-console'
       ref: main
   output:
     to:
       kind: DockerImage
-      name: quay.io/YOUR_GITHUB_USER/greeting-console-build
+      name: quay.io/YOUR_QUAY_USER/greeting-console
     pushSecret:
       name: quay-credentials
