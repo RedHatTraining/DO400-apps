@@ -40,10 +40,6 @@ objects:
     strategy:
       dockerStrategy:
         dockerfilePath: "${DOCKERFILE_PATH}"
-        from:
-          kind: DockerImage
-          name: "${BUILDER_IMAGE_NAME}"
-          imagePullPolicy: Always
       type: Docker
     triggers:
     - type: ConfigChange
@@ -67,11 +63,6 @@ parameters:
   displayName: Git Context Directory
   description: Set this to the directory where the build information is (e.g. Dockerfile)
     if not using the default
-- name: BUILDER_IMAGE_NAME
-  displayName: Image name from which to build this pod
-  description: The build image which this build pod will extend to create it's new
-    build pod type.
-  value: registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7
 - name: SLAVE_IMAGE_TAG
   displayName: Image tag for Jenkins slave.
   description: This is the image tag used for the Jenkins slave.
