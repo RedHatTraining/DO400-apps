@@ -7,5 +7,3 @@ Run server:
 ```sh
 $ node server.js
 ```
-
-

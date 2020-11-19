@@ -11,8 +11,7 @@ pipeline{
 
         stage("Check Style"){
             steps{
-                sh "node --version"
-                // sh "npm run lint"
+                sh "npm run lint"
             }
         }
 
