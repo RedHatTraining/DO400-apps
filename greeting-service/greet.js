@@ -1,3 +1,3 @@
 module.exports = function greet(name) {
-    return `Hello ${name || "guest"}`;
+    return `Hello ${name || "guest"}!`;
 }
