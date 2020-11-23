@@ -1,0 +1,16 @@
+{
+  "name": "greeting-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "greet.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint .",
+    "test": "mocha test"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
+  }
+}
