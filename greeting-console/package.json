@@ -7,7 +7,6 @@
     "lint": "eslint .",
     "test": "mocha test"
   },
-  "author": "Jaime Ramirez <jaime.ramirez@redhat.com>",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.13.0",

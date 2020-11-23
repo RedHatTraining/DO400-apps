@@ -12,7 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/jramcast/do400-greeting-service.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jramcast/do400-greeting-service/issues"
