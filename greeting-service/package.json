@@ -8,15 +8,7 @@
     "lint": "eslint .",
     "test": "mocha test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jramcast/do400-greeting-service.git"
-  },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jramcast/do400-greeting-service/issues"
-  },
-  "homepage": "https://github.com/jramcast/do400-greeting-service#readme",
   "devDependencies": {
     "eslint": "^7.13.0",
     "mocha": "^8.2.1"
