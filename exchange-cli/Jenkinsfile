@@ -4,7 +4,7 @@ pipeline {
   }
 
   stages {
-    stage ('NPM Install & Build') {
+    stage ('Install Dependencies') {
       steps {
         sh """
 					cd exchange-cli
