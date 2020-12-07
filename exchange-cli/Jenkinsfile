@@ -35,10 +35,13 @@ pipeline {
     }
 
     stage ('Functional Tests') {
+      agent {
+        label 'jenkins-agent-python'
+      }
       steps {
         sh """
 					cd exchange-cli
-          npm run test:functional
+          python -m pytest functional-test.py
         """
       }
     }
