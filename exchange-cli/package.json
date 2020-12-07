@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "npm run test:unit && npm run test:functional",
     "test:unit": "jest",
-    "test:functional": "python3 -m pytest functional-test.py"
+    "test:functional": "jest -c jest-functional.config.js"
   },
   "bin": {
     "exchange": "./dist/index.js"

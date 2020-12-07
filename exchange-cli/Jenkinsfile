@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'jenkins-agent-node-python'
+    label 'jenkins-agent-npm'
   }
 
   stages {
@@ -9,21 +9,33 @@ pipeline {
         sh """
 					cd exchange-cli
 					npm install
-          npm run build
-          npm link
 				"""
       }
     }
 
-    stage ('Functional Tests') {
-      agent {
-        label 'jenkins-agent-python'
+    stage ('Build') {
+      steps {
+        sh """
+          cd exchange-cli
+          npm run build
+        """
       }
+    }
+
+    stage ('Unit Tests') {
+      steps {
+        sh """
+          cd exchange-cli
+          npm run test:unit
+        """
+      }
+    }
+
+    stage ('Functional Tests') {
       steps {
         sh """
 					cd exchange-cli
-					pip install -r requirements.txt
-          python -m pytest functional-test.py
+          npm run test:functional
         """
       }
     }
