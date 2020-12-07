@@ -1,7 +1,7 @@
 import os.path
 import subprocess
 
-cmd = "exchange"
+cmd = "node dist/index.js"
 
 def test_cli_help():
     """
