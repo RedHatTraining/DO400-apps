@@ -1,0 +1,35 @@
+pipeline {
+  agent {
+    label 'jenkins-agent-npm'
+  }
+
+  stages {
+    stage ('NPM Dependencies') {
+      steps {
+        sh "npm install"
+      }
+    }
+
+    stage ('Python Dependencies') {
+      agent {
+        label 'jenkins-agent-python'
+      }
+      steps {
+        sh "pip install -r requirements.txt"
+      }
+    }
+
+    stage ('Build') {
+      steps {
+        sh "npm run build"
+      }
+    }
+
+    stage ('Functional Tests') {
+      steps {
+        sh "npm run test:functional"
+      }
+    }
+  }
+}
+
