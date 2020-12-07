@@ -4,33 +4,13 @@ pipeline {
   }
 
   stages {
-    stage ('NPM Dependencies') {
+    stage ('NPM Install & Build') {
       steps {
         sh """
 					cd exchange-cli
 					npm install
-				"""
-      }
-    }
-
-    stage ('Python Dependencies') {
-      agent {
-        label 'jenkins-agent-python'
-      }
-      steps {
-        sh """
-					cd exchange-cli
-					pip install -r requirements.txt
-        """
-      }
-    }
-
-    stage ('Build') {
-      steps {
-        sh """
-					cd exchange-cli
           npm run build
-        """
+				"""
       }
     }
 
@@ -40,6 +20,7 @@ pipeline {
       }
       steps {
         sh """
+					pip install -r requirements.txt
 					cd exchange-cli
           python -m pytest functional-test.py
         """
