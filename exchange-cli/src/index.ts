@@ -42,7 +42,7 @@ const cli = meow(usageText, cliOptions);
 
 const inCurr: string = (cli.flags.input + "").toLowerCase();
 const outCurr: string = (cli.flags.output + "").toLowerCase();
-const amount: number = parseInt(cli.input[0], 10);
+const amount: number = parseFloat(cli.input[0]);
 const converted = convert(inCurr, outCurr, amount);
 
 console.log(
