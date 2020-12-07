@@ -3,7 +3,7 @@ FROM quay.io/openshift/origin-jenkins-agent-base:4.5
 
 ENV NODEJS_VERSION=14 \
     NPM_CONFIG_PREFIX=$HOME/.npm-global \
-    PATH=$HOME/.local/bin/:$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH
+    PATH=$HOME/.local/bin/:$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
     PYTHON_VERSION=3.6 \
     PYTHONUNBUFFERED=1 \
     PYTHONIOENCODING=UTF-8 \
