@@ -20,8 +20,8 @@ pipeline {
       }
       steps {
         sh """
-					pip install -r requirements.txt
 					cd exchange-cli
+					pip install -r requirements.txt
           python -m pytest functional-test.py
         """
       }
