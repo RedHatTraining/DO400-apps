@@ -6,7 +6,10 @@ pipeline {
   stages {
     stage ('NPM Dependencies') {
       steps {
-        sh "npm install"
+        sh """
+					cd exchange-cli
+					npm install
+				"""
       }
     }
 
@@ -15,19 +18,28 @@ pipeline {
         label 'jenkins-agent-python'
       }
       steps {
-        sh "pip install -r requirements.txt"
+        sh """
+					cd exchange-cli
+					pip install -r requirements.txt
+        """
       }
     }
 
     stage ('Build') {
       steps {
-        sh "npm run build"
+        sh """
+					cd exchange-cli
+          npm run build
+        """
       }
     }
 
     stage ('Functional Tests') {
       steps {
-        sh "npm run test:functional"
+        sh """
+					cd exchange-cli
+          npm run test:functional
+        """
       }
     }
   }
