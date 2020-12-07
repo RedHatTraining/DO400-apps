@@ -6,7 +6,9 @@
   "scripts": {
     "start": "tsc-watch",
     "build": "tsc",
-    "test": "jest"
+    "test": "npm run test:unit && npm run test:functional",
+    "test:unit": "jest",
+    "test:functional": "python3 -m pytest functional-test.py"
   },
   "bin": {
     "exchange": "./dist/index.js"
@@ -24,7 +26,6 @@
     "eslint": "^7.15.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
-    "tsc-watch": "^4.2.9",
-    "yarn": "^1.22.10"
+    "tsc-watch": "^4.2.9"
   }
 }
