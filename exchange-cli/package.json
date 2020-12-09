@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc-watch",
     "build": "tsc",
+    "postinstall": "npm run build",
     "test": "npm run test:unit && npm run test:functional",
     "test:unit": "jest",
     "test:functional": "jest -c jest-functional.config.js"
