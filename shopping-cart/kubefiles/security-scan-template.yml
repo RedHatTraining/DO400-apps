@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: shopping-cart-security-scan-template
+  annotations:
+    description: "Shopping Cart - Security Scan Template"
+objects:
+  - kind: Job
+    apiVersion: batch/v1
+    metadata:
+      name: ${APP_NAME}-trivy
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          name: ${APP_NAME}-trivy
+        spec:
+          containers:
+            - name: ${APP_NAME}-trivy
+              image: image-registry.openshift-image-registry.svc:5000/${PROJECT_NAME}/${APP_NAME}
+              command: [ "/bin/sh" ]
+              args:
+                - -c
+                - >-
+                  cd /tmp &&
+                  curl -sL https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_RELEASE}/trivy_${TRIVY_RELEASE}_Linux-64bit.tar.gz -o - | tar -zxf - &&
+                  ./trivy fs --exit-code 1 --severity HIGH,CRITICAL --no-progress --ignore-unfixed /
+          restartPolicy: Never
+
+parameters:
+  - name: PROJECT_NAME
+    description: "Project Name"
+    required: true
+  - name: APP_NAME
+    description: "Application Name"
+    required: false
+    value: "security-scans"
+  - name: TRIVY_RELEASE
+    description: "Trivy Release Version"
+    required: false
+    value: "0.14.0"
