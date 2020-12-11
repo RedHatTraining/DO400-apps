@@ -1,0 +1,34 @@
+pipeline {
+    agent { label 'nodejs' }
+
+    stages{
+
+        stage("Test"){
+            steps{
+                sh "node test.js"
+            }
+        }
+
+        stage('Deploy') {
+            when { expression { false } }
+
+            steps {
+                sh '''
+                    oc project rht-jramirez-devsecops
+                    oc start-build greeting-devsecops  --follow --wait
+                '''
+            }
+        }
+
+        stage('Push to Quay') {
+            when { expression { false } }
+
+            steps {
+                sh '''
+                    oc project rht-jramirez-devsecops
+                    oc start-build greeting-devsecops-quay --follow --wait
+                '''
+            }
+        }
+    }
+}
