@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: prometheus-jenkins-template
+  annotations:
+    description: "Template to deploy a Prometheus instance with a Jenkins target"
+objects:
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: prometheus-config
+    labels:
+      app: prometheus
+  data:
+    prometheus.config.yml: |
+      global:
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        evaluation_interval: 15s
+      alerting:
+        alertmanagers:
+        - scheme: http
+          timeout: 10s
+          api_version: v1
+          static_configs:
+          - targets: []
+      scrape_configs:
+      - job_name: prometheus
+        honor_timestamps: true
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+        - targets:
+          - localhost:9090
+      - job_name: jenkins
+        scheme: https
+        metrics_path: ${JENKINS_METRICS_PATH}
+        static_configs:
+          - targets: [${JENKINS_HOST}]
+- kind: Deployment
+  apiVersion: apps/v1
+  metadata:
+    name: prometheus
+  spec:
+    selector:
+      matchLabels:
+        app: prometheus
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: prometheus
+      spec:
+        volumes:
+          - name: prometheus-volume-1
+            emptyDir: {}
+          - name: prometheus-config-volume
+            configMap:
+              name: prometheus-config
+              items:
+                - key: prometheus.config.yml
+                  path: prometheus.yml
+        containers:
+          - name: prometheus
+            image: quay.io/prometheus/prometheus:${PROMETHEUS_VERSION}
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 9090
+                protocol: TCP
+            volumeMounts:
+              - name: prometheus-volume-1
+                mountPath: /prometheus
+              - name: prometheus-config-volume
+                mountPath: /etc/prometheus/
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: prometheus
+    labels:
+      app: prometheus
+  spec:
+    selector:
+      app: prometheus
+    ports:
+      - name: 9090-tcp
+        protocol: TCP
+        port: 9090
+        targetPort: 9090
+- kind: Route
+  apiVersion: route.openshift.io/v1
+  metadata:
+    name: prometheus
+    labels:
+      app: prometheus
+  spec:
+    to:
+      kind: Service
+      name: prometheus
+    port:
+      targetPort: 9090-tcp
+parameters:
+- name: JENKINS_HOST
+  description: Jenkins hostname to gather metrics from
+  required: true
+- name: JENKINS_METRICS_PATH
+  description: Jenkins path where the Prometheus metrics are exposed.
+  required: false
+  value: "/prometheus"
+- name: PROMETHEUS_VERSION
+  description: Prometheus container image tag
+  required: false
+  value: "v2.23.0"
+
