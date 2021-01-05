@@ -1,0 +1,32 @@
+{
+  "name": "exchange-cli",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "tsc-watch",
+    "build": "tsc",
+    "postinstall": "npm run build",
+    "test": "npm run test:unit && npm run test:functional",
+    "test:unit": "jest",
+    "test:functional": "jest -c jest-functional.config.js"
+  },
+  "bin": {
+    "exchange": "./dist/index.js"
+  },
+  "dependencies": {
+    "meow": "^8.0.0",
+    "ts-node": "^9.1.0",
+    "typescript": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/lowdb": "^1.0.9",
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.15.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "tsc-watch": "^4.2.9"
+  }
+}
