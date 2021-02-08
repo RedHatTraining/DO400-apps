@@ -1,16 +1,16 @@
 package com.redhat.shopping.catalog;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @ApplicationScoped
 public class CatalogService implements Catalog {
 
-    @Inject
-    CatalogStorage storage;
+    private final CatalogStorage storage;
+
+    public CatalogService(CatalogStorage storage) {
+        this.storage = storage;
+    }
 
     @Override
     public Collection<Product> getAll() {
