@@ -1,16 +1,10 @@
 package com.redhat.shopping.integration.blackbox;
 
 import com.redhat.shopping.cart.AddToCartCommand;
-import com.redhat.shopping.catalog.CatalogStorage;
-import com.redhat.shopping.catalog.Product;
-import com.redhat.shopping.catalog.ProductNotFoundInCatalogException;
-import com.redhat.shopping.catalog.persistence.InMemoryCatalogStorage;
-import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.Random;
 
@@ -42,6 +36,7 @@ public class ShoppingCartTest {
     }
 
     @Test
+    @Tag("integration")
     public void removingNonExistingProductInCatalogReturns400() {
         // Test implementation
         given()
@@ -53,6 +48,7 @@ public class ShoppingCartTest {
     }
 
     @Test
+    @Tag("integration")
     public void removingNonAddedProductToTheCartReturns404() {
         // Test implementation
         given()
@@ -64,6 +60,7 @@ public class ShoppingCartTest {
     }
 
     @Test
+    @Tag("integration")
     public void removingTheOnlyProductInCartReturns204() {
         // Setting the scenario to have the product with ID #1 already in the cart
         this.addProductToTheCartWithIdAndRandomQuantity(1);
@@ -78,6 +75,7 @@ public class ShoppingCartTest {
     }
 
     @Test
+    @Tag("integration")
     public void removingProductFromCartContainingMultipleAndDifferentProductsReturns200() {
         // Setting the scenario to have the products with IDs 1 and 2 already in the cart
         this.addProductToTheCartWithIdAndRandomQuantity(1);

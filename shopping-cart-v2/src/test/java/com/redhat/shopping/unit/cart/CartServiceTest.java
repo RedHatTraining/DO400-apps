@@ -8,6 +8,7 @@ import com.redhat.shopping.catalog.Product;
 import com.redhat.shopping.catalog.ProductNotFoundInCatalogException;
 import com.redhat.shopping.unit.ProductMother;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,11 +27,13 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void givenNothingIsAddedToCartThenTotalItemsReturnsZero() {
         assertEquals(0, sut.totalItems());
     }
 
     @Test
+    @Tag("unit")
     public void givenNothingIsAddedToCartThenCartContentReturnsEmptyArray() {
         CartView cartView = sut.cartContent();
 
@@ -39,6 +42,7 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void whenAnItemIsAddedToCartThenCartContentReturnsAnArrayIncludingTheItem() throws Exception {
         Product product = ProductMother.random();
         when(catalogMock.ofId(product.id())).thenReturn(product);
@@ -51,6 +55,7 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void givenAProductIsInCartWhenTheSameProductIsAddedThenQuantityIsIncreased() throws Exception {
         Product product = ProductMother.random();
         when(catalogMock.ofId(product.id())).thenReturn(product);
@@ -65,6 +70,7 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void givenAProductIsNotInCatalogThenProductNotFoundExceptionIsThrown() throws Exception {
         when(catalogMock.ofId(1)).thenThrow(new ProductNotFoundInCatalogException(""));
 
@@ -75,6 +81,7 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void whenAProductIsRemovedThenCartContentDoesNotIncludeIt() throws Exception {
         Product product = ProductMother.random();
         when(catalogMock.ofId(product.id())).thenReturn(product);
@@ -88,6 +95,7 @@ public class CartServiceTest {
     }
 
     @Test
+    @Tag("unit")
     public void givenProductIsNotInCartWhenIsRemovedThenProductNotInCartExceptionIsThrown() throws Exception {
         Product product = ProductMother.random();
         when(catalogMock.ofId(product.id())).thenReturn(product);

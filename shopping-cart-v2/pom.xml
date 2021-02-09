@@ -18,6 +18,7 @@
     <quarkus.platform.version>1.9.0.CR1</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <revision>000-SNAPSHOT</revision>
+    <testGroups>unit,integration</testGroups>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -87,9 +88,7 @@
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
-          <includes>
-            <include>${testClasses}</include>
-          </includes>
+          <groups>${testGroups}</groups>
         </configuration>
       </plugin>
     </plugins>
@@ -127,18 +126,6 @@
       </build>
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
-      </properties>
-    </profile>
-    <profile>
-      <id>unit-test</id>
-      <properties>
-        <testClasses>**/unit/*Test.java</testClasses>
-      </properties>
-    </profile>
-    <profile>
-      <id>integration-test</id>
-      <properties>
-        <testClasses>**/integration/*/*Test.java</testClasses>
       </properties>
     </profile>
   </profiles>
