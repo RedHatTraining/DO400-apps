@@ -15,98 +15,92 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Tag("unit")
 public class CartServiceTest {
 
     private Catalog catalogMock;
-    private CartService sut;
+    private CartService cartService;
 
     @BeforeEach
     public void setUp() {
         catalogMock = mock(Catalog.class);
-        sut = new CartService(catalogMock);
+        cartService = new CartService(catalogMock);
     }
 
     @Test
-    @Tag("unit")
     public void givenNothingIsAddedToCartThenTotalItemsReturnsZero() {
-        assertEquals(0, sut.totalItems());
+        assertEquals(0, cartService.totalItems());
     }
 
     @Test
-    @Tag("unit")
     public void givenNothingIsAddedToCartThenCartContentReturnsEmptyArray() {
-        CartView cartView = sut.cartContent();
+        CartView cartView = cartService.cartContent();
 
         assertEquals(0, cartView.totalItems);
         assertTrue(cartView.products.isEmpty());
     }
 
     @Test
-    @Tag("unit")
     public void whenAnItemIsAddedToCartThenCartContentReturnsAnArrayIncludingTheItem() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogMock.ofId(product.id())).thenReturn(product);
 
-        sut.addProduct(product.id(), 1);
+        cartService.addProduct(product.id(), 1);
 
-        CartView cartView = sut.cartContent();
+        CartView cartView = cartService.cartContent();
         assertEquals(1, cartView.totalItems);
         assertEquals(product.id(), cartView.products.get(0).getId());
     }
 
     @Test
-    @Tag("unit")
     public void givenAProductIsInCartWhenTheSameProductIsAddedThenQuantityIsIncreased() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogMock.ofId(product.id())).thenReturn(product);
         addProductToSut(product);
 
-        sut.addProduct(product.id(), 1);
+        cartService.addProduct(product.id(), 1);
 
-        CartView cartView = sut.cartContent();
+        CartView cartView = cartService.cartContent();
         assertEquals(2, cartView.totalItems);
         assertEquals(1, cartView.products.size());
         assertEquals(product.id(), cartView.products.get(0).getId());
     }
 
     @Test
-    @Tag("unit")
     public void givenAProductIsNotInCatalogThenProductNotFoundExceptionIsThrown() throws Exception {
         when(catalogMock.ofId(1)).thenThrow(new ProductNotFoundInCatalogException(""));
 
         assertThrows(
             ProductNotFoundInCatalogException.class,
-            () -> sut.addProduct(1, 1)
+            () -> cartService.addProduct(1, 1)
         );
     }
 
     @Test
-    @Tag("unit")
     public void whenAProductIsRemovedThenCartContentDoesNotIncludeIt() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogMock.ofId(product.id())).thenReturn(product);
         addProductToSut(product);
 
-        sut.removeProduct(product.id());
+        cartService.removeProduct(product.id());
 
-        CartView cartView = sut.cartContent();
+        CartView cartView = cartService.cartContent();
         assertEquals(0, cartView.totalItems);
         assertTrue(cartView.products.isEmpty());
     }
 
     @Test
-    @Tag("unit")
     public void givenProductIsNotInCartWhenIsRemovedThenProductNotInCartExceptionIsThrown() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogMock.ofId(product.id())).thenReturn(product);
 
         assertThrows(
             ProductNotInCartException.class,
-            () -> sut.removeProduct(product.id())
+            () -> cartService.removeProduct(product.id())
         );
     }
 
     private void addProductToSut(Product product) throws Exception {
-        sut.addProduct(product.id(), 1);
+        cartService.addProduct(product.id(), 1);
     }
 }

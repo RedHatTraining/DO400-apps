@@ -4,7 +4,7 @@ import com.redhat.shopping.catalog.Product;
 
 public class ProductMother {
 
-    public static Product random() {
+    public static Product any() {
         return new Product(1, 20);
     }
 }

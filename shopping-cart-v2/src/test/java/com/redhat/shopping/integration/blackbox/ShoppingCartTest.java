@@ -12,6 +12,7 @@ import static io.restassured.RestAssured.delete;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
+@Tag("integration")
 public class ShoppingCartTest {
 
     private int randomQuantity() {
@@ -36,7 +37,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     public void removingNonExistingProductInCatalogReturns400() {
         // Test implementation
         given()
@@ -48,7 +48,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     public void removingNonAddedProductToTheCartReturns404() {
         // Test implementation
         given()
@@ -60,7 +59,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     public void removingTheOnlyProductInCartReturns204() {
         // Setting the scenario to have the product with ID #1 already in the cart
         this.addProductToTheCartWithIdAndRandomQuantity(1);
@@ -75,7 +73,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     public void removingProductFromCartContainingMultipleAndDifferentProductsReturns200() {
         // Setting the scenario to have the products with IDs 1 and 2 already in the cart
         this.addProductToTheCartWithIdAndRandomQuantity(1);

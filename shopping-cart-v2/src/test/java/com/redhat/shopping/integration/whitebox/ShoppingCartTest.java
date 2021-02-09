@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @QuarkusTest
+@Tag("integration")
 public class ShoppingCartTest {
 
     @Inject
@@ -24,7 +25,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     void addingNonExistingProductInCatalogRaisesAnException() {
         assertThrows(
             ProductNotFoundInCatalogException.class,
@@ -33,7 +33,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     void addingNonExistingProductInCartTheTotalItemsMatchTheInitialQuantity()
             throws ProductNotFoundInCatalogException {
 
@@ -45,7 +44,6 @@ public class ShoppingCartTest {
     }
 
     @Test
-    @Tag("integration")
     void addingProductThatIsInTheCartTheTotalItemsMatchTheSumOfQuantities()
             throws ProductNotFoundInCatalogException {
 

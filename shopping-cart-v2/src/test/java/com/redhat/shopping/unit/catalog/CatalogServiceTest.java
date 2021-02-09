@@ -15,52 +15,49 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Tag("unit")
 public class CatalogServiceTest {
 
     private CatalogStorage catalogStorageMock;
-    private CatalogService sut;
+    private CatalogService catalogService;
 
     @BeforeEach
     public void setUp() {
         catalogStorageMock = mock(CatalogStorage.class);
-        sut = new CatalogService(catalogStorageMock);
+        catalogService = new CatalogService(catalogStorageMock);
     }
 
     @Test
-    @Tag("unit")
     public void givenNoItemsInCatalogThenGetAllReturnsEmptyCollection() {
         when(catalogStorageMock.getAll()).thenReturn(Collections.emptyList());
 
-        assertTrue(sut.getAll().isEmpty());
+        assertTrue(catalogService.getAll().isEmpty());
     }
 
     @Test
-    @Tag("unit")
     public void getAllReturnsCollectionWithProducts() {
-        when(catalogStorageMock.getAll()).thenReturn(Collections.singletonList(ProductMother.random()));
+        when(catalogStorageMock.getAll()).thenReturn(Collections.singletonList(ProductMother.any()));
 
-        assertEquals(1, sut.getAll().size());
+        assertEquals(1, catalogService.getAll().size());
     }
 
     @Test
-    @Tag("unit")
     public void givenProductExistsThenOfIdReturnsProduct() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogStorageMock.containsKey(product.id())).thenReturn(true);
         when(catalogStorageMock.get(product.id())).thenReturn(product);
 
-        assertEquals(product, sut.ofId(product.id()));
+        assertEquals(product, catalogService.ofId(product.id()));
     }
 
     @Test
-    @Tag("unit")
     public void givenProductDoesNotExistsWhenOfIdIsCalledThenProductNotFoundInCatalogExceptionIsThrown() throws Exception {
-        Product product = ProductMother.random();
+        Product product = ProductMother.any();
         when(catalogStorageMock.containsKey(product.id())).thenReturn(false);
 
         assertThrows(
             ProductNotFoundInCatalogException.class,
-            () -> sut.ofId(product.id())
+            () -> catalogService.ofId(product.id())
         );
     }
 }
