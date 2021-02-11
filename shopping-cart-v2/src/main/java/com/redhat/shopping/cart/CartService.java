@@ -5,7 +5,6 @@ import com.redhat.shopping.catalog.Product;
 import com.redhat.shopping.catalog.ProductNotFoundInCatalogException;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +14,11 @@ public class CartService {
     private final Map<Integer, CartItem> products = new HashMap<>();
     private int totalItems = 0;
 
-    @Inject
-    Catalog catalog;
+    private final Catalog catalog;
+
+    public CartService(Catalog catalog) {
+        this.catalog = catalog;
+    }
 
     private void recalculate() {
         this.totalItems = 0;

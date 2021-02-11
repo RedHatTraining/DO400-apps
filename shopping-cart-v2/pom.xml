@@ -18,6 +18,7 @@
     <quarkus.platform.version>1.9.0.CR1</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <revision>000-SNAPSHOT</revision>
+    <testGroups>unit,integration</testGroups>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -87,6 +88,7 @@
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
+          <groups>${testGroups}</groups>
         </configuration>
       </plugin>
     </plugins>

@@ -1,16 +1,11 @@
 package com.redhat.shopping.integration.whitebox;
 
 import com.redhat.shopping.cart.CartService;
-import com.redhat.shopping.catalog.CatalogStorage;
-import com.redhat.shopping.catalog.Product;
 import com.redhat.shopping.catalog.ProductNotFoundInCatalogException;
-import com.redhat.shopping.catalog.persistence.InMemoryCatalogStorage;
-import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import javax.inject.Inject;
 
@@ -18,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @QuarkusTest
+@Tag("integration")
 public class ShoppingCartTest {
 
     @Inject

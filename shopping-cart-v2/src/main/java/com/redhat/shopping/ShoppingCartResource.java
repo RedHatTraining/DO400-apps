@@ -11,7 +11,6 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
@@ -21,8 +20,11 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Produces(APPLICATION_JSON)
 public class ShoppingCartResource {
 
-    @Inject
-    CartService cartService;
+    private CartService cartService;
+
+    public ShoppingCartResource(CartService cartService) {
+        this.cartService = cartService;
+    }
 
     @PUT
     @Consumes(APPLICATION_JSON)
