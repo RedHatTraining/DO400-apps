@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        label "jenkins-agent-node-14"
+        label "nodejs"
     }
     stages{
         stage("Install dependencies"){
