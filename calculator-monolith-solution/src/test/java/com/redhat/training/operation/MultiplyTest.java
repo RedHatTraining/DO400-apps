@@ -24,7 +24,7 @@ public class MultiplyTest {
 
     @Test
     public void unparseable_operation() {
-        assertNull(multiply.apply("4+5"));
+        assertNull(multiply.apply("4-5"));
     }
 
 }

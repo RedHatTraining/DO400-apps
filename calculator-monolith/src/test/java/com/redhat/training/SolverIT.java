@@ -47,23 +47,23 @@ public class SolverIT {
     }
 
     @Test
-    public void solve_multiply() {
-        given()
-        .when()
-            .get("4*2")
-        .then()
-            .statusCode(200)
-            .body(is("8.0"));
-    }
-
-    @Test
     public void solve_composed() {
         given()
         .when()
-            .get("4+2*2-1*3")
+            .get("4+2-1")
         .then()
             .statusCode(200)
-            .body(is("5.0"));        
+            .body(is("5.0"));
     }
+
+    @Test
+    public void solve_error() {
+        given()
+        .when()
+            .get("error")
+        .then()
+            .statusCode(400);
+    }
+
 
 }

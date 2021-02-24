@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Multiply.java">
+</file>
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Operation.java">
+</file>
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Add.java">
+</file>
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Substract.java">
+</file>
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/SolverResource.java">
+</file>
+<file name="/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/service/SolverService.java">
+</file>
+</checkstyle>

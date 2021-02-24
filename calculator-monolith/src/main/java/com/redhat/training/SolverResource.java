@@ -7,18 +7,22 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
+import com.redhat.training.operation.Add;
 import com.redhat.training.operation.Operation;
+import com.redhat.training.operation.Substract;
 import com.redhat.training.service.SolverService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class SolverResource implements SolverService {
-    private static final Logger LOG =
-     LoggerFactory.getLogger(SolverResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SolverResource.class);
 
     @Inject
-    OperationRegistry registry;
+    Add add;
+
+    @Inject
+    Substract substract;
 
     @Override
     public Float solve(@PathParam("equation") final String equation) {
@@ -35,18 +39,17 @@ public final class SolverResource implements SolverService {
 
     private Float solveOperation(final String equation) {
         LOG.info("Solving '{}'", equation);
-        List<Operation> values = registry.getValues();
+        List<Operation> values = List.of(substract, add);
         for (Operation operation : values) {
-            if (operation.appliesTo(equation)) {
-                Float result = operation.apply(equation);
+            Float result = operation.apply(equation);
+            if (result != null) {
                 LOG.info("Solved '{} = {}'", equation, result);
                 return result;
             }
         }
 
         throw new WebApplicationException(
-                Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Unable to parse: " + equation).build());
+                Response.status(Response.Status.BAD_REQUEST).entity("Unable to parse: " + equation).build());
     }
 
 }

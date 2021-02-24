@@ -1,8 +1,10 @@
 package com.redhat.training;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 import com.redhat.training.service.SolverService;
 
@@ -33,18 +35,17 @@ public class SolverTest {
     }
 
     @Test
-    public void solve_multiply() {
-        assertEquals(solverService.solve("5*3"), 15);
+    public void solve_composition() {
+        assertEquals(solverService.solve("20+5+3+2"), 30);
     }
 
     @Test
-    public void solve_composed() {
-        assertEquals(solverService.solve("20-5*3+3"), 8);
+    public void solve_addition_overprioritize_substraction() {
+        assertEquals(solverService.solve("20-5+3+2"), 10);
     }
 
     @Test
-    public void solve_composed_multiplication_priority() {
-        assertEquals(solverService.solve("5*3+3"), 18);
+    public void solve_error() {
+        assertThrows(WebApplicationException.class, () -> solverService.solve("5+"));
     }
-
 }

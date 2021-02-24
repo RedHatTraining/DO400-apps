@@ -1,0 +1,6 @@
+com/redhat/training/operation/Substract.class
+com/redhat/training/operation/Add.class
+com/redhat/training/operation/Multiply.class
+com/redhat/training/SolverResource.class
+com/redhat/training/service/SolverService.class
+com/redhat/training/operation/Operation.class
