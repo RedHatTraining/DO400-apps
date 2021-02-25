@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.redhat.training.operation.MultiplyTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.497 s - in com.redhat.training.operation.MultiplyTest
