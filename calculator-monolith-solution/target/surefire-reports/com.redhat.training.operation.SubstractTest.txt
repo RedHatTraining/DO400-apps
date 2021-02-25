@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.redhat.training.operation.SubstractTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in com.redhat.training.operation.SubstractTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in com.redhat.training.operation.SubstractTest

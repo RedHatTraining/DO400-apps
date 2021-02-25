@@ -7,27 +7,26 @@ import java.util.function.BinaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.redhat.training.service.SolverService;
-@ApplicationScoped
-public final class Substract implements Operation {
 
-    private static final String REGEX = "(.+)\\-(.+)";
-    private static final BinaryOperator<Float> OPERATOR = (lhs, rhs) -> lhs - rhs;
+public abstract class BinaryOperation implements Operation {
 
-    public Substract() {
-        super();
+    private final BinaryOperator<Float> operator;
+    private final String regex;
+
+    public BinaryOperation(final BinaryOperator<Float> operatorParam, final String regexParam) {
+        this.operator = operatorParam;
+        this.regex = regexParam;
     }
 
-    @Override
     public Float apply(final String equation) {
-        return solveGroups(equation).stream().reduce(OPERATOR).orElse(null);
+        return solveGroups(equation).stream().reduce(operator).orElse(null);
     }
 
     private List<Float> solveGroups(final String equation) {
-        Matcher matcher = Pattern.compile(REGEX).matcher(equation);
+        Matcher matcher = Pattern.compile(regex).matcher(equation);
         if (matcher.matches()) {
             List<Float> result = new ArrayList<>(matcher.groupCount());
             for (int groupNum = 1; groupNum <= matcher.groupCount(); groupNum++) {
@@ -45,5 +44,4 @@ public final class Substract implements Operation {
     private Float solve(final String equation) {
         return solverService.solve(equation);
     }
-
 }

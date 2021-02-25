@@ -16,54 +16,32 @@ import io.quarkus.test.junit.QuarkusTest;
 @Tag("integration")
 public class SolverIT {
 
+    private static void expectEquationSolution(final String equation, final String body) {
+        given().when().get(equation).then().statusCode(200).body(is(body));
+    }
+
     @Test
     public void solve_number() {
-        given()
-        .when()
-            .get("4")
-        .then()
-            .statusCode(200)
-            .body(is("4.0"));
+        expectEquationSolution("4", "4.0");
     }
 
     @Test
     public void solve_add() {
-        given()
-        .when()
-            .get("4+2")
-        .then()
-            .statusCode(200)
-            .body(is("6.0"));
+        expectEquationSolution("4+2","6.0");
     }
 
     @Test
     public void solve_substract() {
-        given()
-        .when()
-            .get("4-2")
-        .then()
-            .statusCode(200)
-            .body(is("2.0"));
+        expectEquationSolution("4-2","2.0");
     }
 
     @Test
     public void solve_composed() {
-        given()
-        .when()
-            .get("4+2-1")
-        .then()
-            .statusCode(200)
-            .body(is("5.0"));
+        expectEquationSolution("4+2-1","5.0");
     }
 
     @Test
     public void solve_error() {
-        given()
-        .when()
-            .get("error")
-        .then()
-            .statusCode(400);
+        given().when().get("error").then().statusCode(400);
     }
-
-
 }

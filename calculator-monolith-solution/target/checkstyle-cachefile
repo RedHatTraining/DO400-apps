@@ -1,10 +1,13 @@
-#Wed Feb 24 18:55:41 CET 2021
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Operation.java=1614189148718
+#Thu Feb 25 11:42:55 CET 2021
 configuration*?=E19B161132863547F4A111A4B3B213A97CAA4E5D
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Multiply.java=1614187342399
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/SolverResource.java=1614189238330
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Add.java=1614187114706
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Multiply.java=1614247938253
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Add.java=1614247931657
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/OperationRegistry.java=1614248124803
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Identity.java=1614247963045
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/service/SolverService.java=1614243572826
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Substract.java=1614247941830
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Operation.java=1614248002085
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/SolverResource.java=1614248150570
 module-resource*?\:checkstyle-xpath-suppressions.xml=AD6D142FD26EB83FDB5FE48A2ABC58279254951B
 module-resource*?\:checkstyle-suppressions.xml=8DC32D3032B327A15273A4B6A99C32FDD15F7274
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/service/SolverService.java=1614179891099
-/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/Substract.java=1614189329839
+/Users/jordisola/Projects/RedHatTraining/DO400-apps/calculator-monolith-solution/src/main/java/com/redhat/training/operation/BinaryOperation.java=1614248063418
