@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: email
-          image: maildev/maildev:latest
+          image: quay.io/redhattraining/maildev-mirror:latest
           imagePullPolicy: Always
           command: ["bin/maildev"]
           args: ["--web", "8080", "--smtp", "1025", "--verbose"]
