@@ -10,7 +10,7 @@ import io.quarkus.test.junit.mockito.InjectMock;
 
 @QuarkusTest
 @TestHTTPEndpoint(AdderResource.class)
-public class AdderResourceIT {
+public class AdderResourceTest {
 
     @InjectMock
     @RestClient 
