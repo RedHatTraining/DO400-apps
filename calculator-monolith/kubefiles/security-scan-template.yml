@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: calculator-security-scan-template
+  annotations:
+    description: "Calculator - Security Scan Template"
+objects:
+  - kind: Job
+    apiVersion: batch/v1
+    metadata:
+      name: ${APP_NAME}-trivy
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          name: ${APP_NAME}-trivy
+        spec:
+          containers:
+            - name: ${APP_NAME}-trivy
+              image: quay.io/${QUAY_USER}/${QUAY_REPOSITORY}
+              env:
+              command: [ "/bin/sh" ]
+              args:
+                - -c
+                - >-
+                  cd /tmp &&
+                  curl -sL https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_RELEASE}/trivy_${TRIVY_RELEASE}_Linux-64bit.tar.gz -o - | tar -zxf - &&
+                  ./trivy fs --cache-dir /tmp/.cache --exit-code 1 --severity HIGH,CRITICAL --no-progress --ignore-unfixed /
+          restartPolicy: Never
+
+parameters:
+  - name: QUAY_USER
+    description: "Quay User"
+    required: true
+  - name: QUAY_REPOSITORY
+    description: "Quay Repository"
+    required: true
+  - name: APP_NAME
+    description: "Application Name"
+    required: true
+  - name: TRIVY_RELEASE
+    description: "Trivy Release Version"
+    required: false
+    value: "0.14.0"
