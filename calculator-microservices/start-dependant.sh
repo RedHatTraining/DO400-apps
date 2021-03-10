@@ -2,14 +2,14 @@
 
 echo "Starting the 'adder' project "
 cd adder
-mvn quarkus:dev &
+./mvnw quarkus:dev &
 ADDER_PID=$!
 sleep 5
 cd ..
 
 echo "Starting the 'multiplier' project "
 cd multiplier
-mvn quarkus:dev &
+./mvnw quarkus:dev &
 MULTIPLIER_PID=$!
 sleep 5
 cd ..
