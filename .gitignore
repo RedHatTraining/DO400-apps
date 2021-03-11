@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Visual Studio Code
 .vscode
 
@@ -7,3 +8,6 @@
 =======
 .vscode
 >>>>>>> update quarkus versions to latest
+=======
+.vscode
+>>>>>>> da8ca47ff60a6c915343c55b48f99de862e3b49e
