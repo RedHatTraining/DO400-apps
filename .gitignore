@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 # Visual Studio Code
 .vscode
 
 # OSX
 .DS_Store
+=======
+.vscode
+>>>>>>> update quarkus versions to latest
