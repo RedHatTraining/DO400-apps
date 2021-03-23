@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('Deploy') {
+            steps {
+                sh '''
+                    oc project RHT_OCP4_DEV_USER-deploy-strategies
+                    oc start-build greeting-service --follow --wait
+                '''
+            }
+        }
+    }
+}
