@@ -18,13 +18,12 @@ public class MultiplyTest {
     Multiply multiply;
 
     @Test
-    public void simple_addition() {
+    public void simple_multiplication() {
         assertEquals(multiply.apply("4*5"),20);
     }
 
     @Test
     public void unparseable_operation() {
-        assertNull(multiply.apply("4+5"));
+        assertNull(multiply.apply("4-5"));
     }
-
 }
