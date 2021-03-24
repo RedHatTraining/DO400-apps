@@ -47,7 +47,7 @@ public class LibraryTest {
         inventory.add(new Book("book1"));
 
         // When
-        library.checkOut("student1", "book1");
+        library.checkOut("someStudentId", "book1");
 
         // Then
         assertEquals(1, inventory.countCopies("book1"));
@@ -64,7 +64,7 @@ public class LibraryTest {
 
         // When
         final BookNotAvailableException exception = assertThrows( BookNotAvailableException.class, () -> {
-            library.checkOut("student1", "book1");
+            library.checkOut("student3", "book1");
         } );
 
         // Then
