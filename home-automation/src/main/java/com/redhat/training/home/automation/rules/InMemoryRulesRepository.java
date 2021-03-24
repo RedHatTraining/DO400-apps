@@ -1,10 +1,10 @@
 package com.redhat.training.home.automation.rules;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class InMemoryRulesRepository implements RulesRepository {
     @Override
     public Iterable<Rule> getAll() {
-        return Arrays.asList(new DaylightRule(), new PresenceRule());
+        return List.of(new DaylightRule(), new PresenceRule());
     }
 }

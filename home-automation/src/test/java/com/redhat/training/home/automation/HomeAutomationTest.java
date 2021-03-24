@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import com.redhat.training.home.automation.lights.LightSystem;
-import com.redhat.training.home.automation.lights.ConsoleLightAdapter;
+import com.redhat.training.home.automation.lights.ConsoleLightSystem;
 import com.redhat.training.home.automation.rules.InMemoryRulesRepository;
 import com.redhat.training.home.automation.rules.RulesRepository;
 
@@ -16,7 +16,7 @@ public class HomeAutomationTest {
 
     @BeforeEach
     public void setUp() {
-        light = new ConsoleLightAdapter();
+        light = new ConsoleLightSystem();
         rulesRepository = new InMemoryRulesRepository();
         home = new HomeAutomation(light, rulesRepository);
     }
