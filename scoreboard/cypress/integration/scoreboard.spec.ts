@@ -18,6 +18,7 @@ describe("add player", () => {
     it("should only allow names of max length 10", () => {
         // AND the user has entered 10 characters into the 'Player Name' field
         const nameField = cy.get("form").find('[placeholder="Player Name"]');
+        nameField.clear();
         nameField.type("1234567890");
 
         // WHEN the user enters an 11th character
