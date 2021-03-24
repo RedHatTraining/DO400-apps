@@ -49,7 +49,7 @@ public class SolverIT {
     public void solve_composed_multiply() {
          expectEquationSolution("4+2*3","10.0");
     }
-    
+
     @Test
     public void solve_error() {
         given().when().get("error").then().statusCode(400);
