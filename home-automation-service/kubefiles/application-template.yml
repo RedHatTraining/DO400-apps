@@ -5,13 +5,14 @@ metadata:
   annotations:
     description: "Home Automation Application Template"
 objects:
-  - kind: DeploymentConfig
-    apiVersion: v1
+  - kind: Deployment
+    apiVersion: apps/v1
     metadata:
       name: home-automation
     spec:
       selector:
-        app: home-automation
+        matchLabels:
+          app: home-automation
       replicas: 1
       template:
         metadata:
@@ -25,7 +26,7 @@ objects:
               ports:
                 - containerPort: 8080
       strategy:
-        type: Rolling
+        type: RollingUpdate
   - kind: Service
     apiVersion: v1
     metadata:
