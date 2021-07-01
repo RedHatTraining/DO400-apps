@@ -24,7 +24,7 @@ objects:
                 - >-
                   cd /tmp &&
                   curl -sL https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_RELEASE}/trivy_${TRIVY_RELEASE}_Linux-64bit.tar.gz -o - | tar -zxf - &&
-                  ./trivy fs --exit-code 1 --severity HIGH,CRITICAL --no-progress --ignore-unfixed /
+                  ./trivy fs --severity HIGH,CRITICAL --no-progress --ignore-unfixed /
           restartPolicy: Never
 
 parameters:
