@@ -24,7 +24,8 @@ objects:
                 - >-
                   cd /tmp &&
                   curl -sL https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_RELEASE}/trivy_${TRIVY_RELEASE}_Linux-64bit.tar.gz -o - | tar -zxf - &&
-                  ./trivy fs --severity HIGH,CRITICAL --no-progress --ignore-unfixed /
+                  { ./trivy fs --severity HIGH,CRITICAL --no-progress --ignore-unfixed / | grep ${CVE_CODE} ;
+                  ./trivy fs --severity HIGH,CRITICAL --no-progress --ignore-unfixed / | grep -qvz ${CVE_CODE} ; }
           restartPolicy: Never
 
 parameters:
@@ -39,3 +40,7 @@ parameters:
     description: "Trivy Release Version"
     required: false
     value: "0.14.0"
+  - name: CVE_CODE
+    description: "CVE Code"
+    required: false
+    value: "CVE-2020-14583"
