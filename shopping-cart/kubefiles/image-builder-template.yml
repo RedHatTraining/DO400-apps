@@ -71,8 +71,8 @@ objects:
             name: openjdk-11:1.3-3
         type: Source
       triggers: []
-  - apiVersion: apps.openshift.io/v1
-    kind: DeploymentConfig
+  - apiVersion: apps/v1
+    kind: Deployment
     metadata:
       labels:
         app: ${APP_NAME}
@@ -82,13 +82,14 @@ objects:
     spec:
       replicas: 1
       selector:
-        deploymentconfig: ${APP_NAME}
+        matchLabels:
+          app: ${APP_NAME}
       strategy:
         resources: {}
       template:
         metadata:
           labels:
-            deploymentconfig: ${APP_NAME}
+            app: ${APP_NAME}
         spec:
           containers:
             - image: image-registry.openshift-image-registry.svc:5000/${PROJECT_NAME}/${APP_NAME}:latest
@@ -127,7 +128,7 @@ objects:
           protocol: TCP
           targetPort: 8778
       selector:
-        deploymentconfig: ${APP_NAME}
+        app: ${APP_NAME}
   - kind: Route
     apiVersion: route.openshift.io/v1
     metadata:
