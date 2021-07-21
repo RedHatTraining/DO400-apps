@@ -9,7 +9,7 @@ podState=$(oc get pods --selector=job-name=${1} -n ${2} \
 
 if [ "${podState}" -eq 0 ]
 then
-  exit 0
+  exit 1
 fi
 
-exit 1
+exit 0
