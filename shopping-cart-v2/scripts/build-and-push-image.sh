@@ -10,6 +10,7 @@ do
 done
 
 ./mvnw -Drevision="${build_number}" package -DskipTests \
+  -Dquarkus.jib.base-jvm-image=quay.io/redhattraining/do400-java-alpine-openjdk11-jre:latest \
   -Dquarkus.container-image.build=true \
   -Dquarkus.container-image.registry=quay.io \
   -Dquarkus.container-image.group="${quay_user}" \
