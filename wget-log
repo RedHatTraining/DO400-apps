@@ -1,0 +1,16 @@
+--2022-02-15 12:15:41--  https://access.cdn.redhat.com/content/origin/files/sha256/28/2895de3bb4a9d9a68aa6e48c06ffaed21f81c7341a78e81fddd7c50eaca08c1b/oc-4.9.21-linux.tar.gz?user=4a239aa60e9361145ec4d428df306417
+Resolving access.cdn.redhat.com (access.cdn.redhat.com)... 2.19.195.224, 104.110.240.48, 2a02:26f0:fe00::686e:f0b2, ...
+Connecting to access.cdn.redhat.com (access.cdn.redhat.com)|2.19.195.224|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://access.redhat.com/downloads/content/error?code=403&uri=/content/origin/files/sha256/28/2895de3bb4a9d9a68aa6e48c06ffaed21f81c7341a78e81fddd7c50eaca08c1b/oc-4.9.21-linux.tar.gz&client=77.137.68.204&edge=2.19.195.220&timestamp=1644920141 [following]
+--2022-02-15 12:15:41--  https://access.redhat.com/downloads/content/error?code=403&uri=/content/origin/files/sha256/28/2895de3bb4a9d9a68aa6e48c06ffaed21f81c7341a78e81fddd7c50eaca08c1b/oc-4.9.21-linux.tar.gz&client=77.137.68.204&edge=2.19.195.220&timestamp=1644920141
+Resolving access.redhat.com (access.redhat.com)... 104.110.240.178, 104.110.240.105, 2a02:26f0:fe00::686e:f069, ...
+Connecting to access.redhat.com (access.redhat.com)|104.110.240.178|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘oc-4.9.21-linux.tar.gz?user=4a239aa60e9361145ec4d428df306417’
+
+              oc-4.9.21-linu     [<=>                                           ]       0  --.-KB/s               oc-4.9.21-linux.tar.gz?user=     [ <=>                                          ]  55.86K  --.-KB/s    in 0.1s    
+
+2022-02-15 12:15:42 (563 KB/s) - ‘oc-4.9.21-linux.tar.gz?user=4a239aa60e9361145ec4d428df306417’ saved [57201]
+
