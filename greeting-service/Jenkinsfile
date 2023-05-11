@@ -5,7 +5,7 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
-                    oc project RHT_OCP4_DEV_USER-deploy-strategies
+                    oc project btutpi-deploy-strategies
                     oc start-build greeting-service --follow --wait
                 '''
             }
