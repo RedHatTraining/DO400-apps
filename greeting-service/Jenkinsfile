@@ -1,26 +1,14 @@
 pipeline{
-    agent{
-        label "nodejs"
-    }
+    agent any
+
     stages{
-        stage("Install dependencies"){
-            steps{
-                sh "npm ci"
+        stage('Deploy') {
+            steps {
+                sh '''
+                    oc project RHT_OCP4_DEV_USER-deploy-strategies
+                    oc start-build greeting-service --follow --wait
+                '''
             }
         }
-
-        stage("Check Style"){
-            steps{
-                sh "npm run lint"
-            }
-        }
-
-        stage("Test"){
-            steps{
-                sh "npm test"
-            }
-        }
-
-        // Add the "Deploy" stage here
     }
 }
