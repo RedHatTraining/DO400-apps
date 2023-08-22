@@ -21,6 +21,7 @@ public class Library {
     }
 
     public Book checkOut(String studentId, String isbn) throws BookNotAvailableException {
+        
         if (!inventory.isBookAvailable(isbn)) {
             throw new BookNotAvailableException(isbn);
         }
