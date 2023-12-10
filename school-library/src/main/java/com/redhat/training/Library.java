@@ -20,7 +20,8 @@ public class Library {
         this.inventory = inventory;
     }
 
-    public Book checkOut(String studentId, String isbn) throws BookNotAvailableException {
+    public Book checkOut(String studentId, String isbn)
+            throws BookNotAvailableException {
         if (!inventory.isBookAvailable(isbn)) {
             throw new BookNotAvailableException(isbn);
         }
