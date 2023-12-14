@@ -17,7 +17,7 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.2",
-        "cypress": "^5.4.0"
+        "cypress": "^5.6.0"
     },
     "scripts": {
         "start": "react-scripts start",
